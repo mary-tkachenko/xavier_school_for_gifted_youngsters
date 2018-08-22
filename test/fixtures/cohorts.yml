@@ -5,11 +5,11 @@ one:
   auditorium: 1
   start_date: 1
   end_date: 1
-  students: 1
+  students_number: 1
 
 two:
   name: MyString
   auditorium: 1
   start_date: 1
   end_date: 1
-  students: 1
+  students_number: 1
