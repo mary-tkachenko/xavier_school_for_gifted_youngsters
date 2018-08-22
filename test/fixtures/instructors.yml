@@ -9,7 +9,7 @@ one:
   salary: 1
   photo_url: MyString
   education: MyString
-  class_id: 1
+  course_id: 1
 
 two:
   first_name: MyString
@@ -20,4 +20,4 @@ two:
   salary: 1
   photo_url: MyString
   education: MyString
-  class_id: 1
+  course_id: 1

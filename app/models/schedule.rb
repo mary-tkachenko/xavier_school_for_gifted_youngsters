@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
     has_many :instructors
-    has_many :cohorts
-    has_many :courses
+    belongs_to :cohort
+    belongs_to :course
 end

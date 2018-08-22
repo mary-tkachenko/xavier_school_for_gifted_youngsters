@@ -1,0 +1,10 @@
+<% @instructors.each do |instructor| %>
+  Name: <%= instructor.first_name %> <%= instructor.last_name %>
+  Age: <%= instructor.age %>
+  Nickname: <%= instructor.nickname %>
+  Abilities: <%= instructor.abilities %>
+  Salary: <%= instructor.salary %>
+  Education: <%= instructor.education %>
+  Course: <%= instructor.course_id %>
+  <img src="<%= instructor.photo_url %>" style="width:200px;">
+<% end %>

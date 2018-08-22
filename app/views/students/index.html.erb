@@ -1,6 +1,8 @@
-<%= @students.each do |student| %>
-  <%= student.first_name %>
-  <%= student.last_name %>
-  <%= student.age %>
-  <%= student.nickname %>
+<% @students.each do |student| %>
+  Name: <%= student.first_name %> <%= student.last_name %>
+  Age: <%= student.age %>
+  Nickname: <%= student.nickname %>
+  Abilities: <%= student.abilities %>
+  Cohort: <%= student.cohort_id %>
+  <img src="<%= student.photo %>" style="width:200px;">
 <% end %>
