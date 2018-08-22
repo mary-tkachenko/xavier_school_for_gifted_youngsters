@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_182939) do
+ActiveRecord::Schema.define(version: 2018_08_22_203852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_182939) do
     t.integer "salary"
     t.string "photo_url"
     t.string "education"
-    t.integer "class_id"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

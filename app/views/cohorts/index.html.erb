@@ -1,0 +1,7 @@
+<% @cohorts.each do |cohort| %>
+  Name: <%= cohort.name %>
+  Auditorium: <%= cohort.auditorium %>
+  Start: <%= cohort.start_date %>
+  End: <%= cohort.end_date %>
+  Students total: <%= cohort.students_number %>
+<% end %>
