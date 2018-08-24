@@ -16,6 +16,13 @@ class StudentsController < ApplicationController
         # method: get
         # action: index
         # template: students/new.html.erb
+        @student = Student.new
+      end
+
+      def create
+        Student.create(first_name: params[:student][:first_name], last_name: params[:student][:last_name], nickname: params[:student][:nickname], age: params[:student][:age], abilities: params[:student][:abilities], photo: params[:student][:photo], cohort_id: params[:student][:cohort_id])
+
+        redirect_to "/students"
       end
     
       def edit
