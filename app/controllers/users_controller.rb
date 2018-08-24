@@ -1,16 +1,15 @@
-class InstructorsController < ApplicationController
+class UsersController < ApplicationController
     def index
         # method: get
         # action: index
         # template: students/index.html.erb
-        @instructors = Instructor.all
+        @users = User.all
       end
     
       def show
         # method: get
         # action: index
         # template: students/show.html.erb
-        @instructor = Instructor.find(params[:id])
       end
     
       def new
