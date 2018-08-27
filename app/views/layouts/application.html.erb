@@ -19,12 +19,11 @@
     <% if user == "student" %>
     <p>"yay"</p>
     <% end %>
-   
-
         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
         <%= link_to 'Edit Profile', edit_user_registration_path %>
 
         <p><a href="/students"> See students </a></p>
+        <p><a href="/courses"> See courses </a></p>
       <p><a href="/instructors"> See instructors </a></p>
       <p><a href="/cohorts"> See cohorts </a></p>
       <p><a href="/schedules"> See schedule </a></p>
