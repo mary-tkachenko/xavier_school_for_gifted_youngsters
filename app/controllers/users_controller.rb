@@ -3,27 +3,22 @@ class UsersController < ApplicationController
         # method: get
         # action: index
         # template: students/index.html.erb
-        @users = User.all
-        @user_id = session[:user_id]
+       @current_user = current_user
       end
+
+  
     
       def show
         # method: get
         # action: index
         # template: students/show.html.erb
+     
       end
     
       def new
         # method: get
         # action: index
         # template: students/new.html.erb
-
-        @user_id = session[:user_id]
-        @user = User.new
-      end
-
-      def create
-        @user = User.create(params[:user])
       end
     
       def edit

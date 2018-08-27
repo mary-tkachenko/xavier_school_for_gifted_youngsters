@@ -1,27 +1,29 @@
 class WelcomeController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:index]
+
     def index
         # method: get
         # action: index
-        # template: students/index.html.erb
+        # template: welcome/index.html.erb
        
       end
     
       def show
         # method: get
         # action: index
-        # template: students/show.html.erb
+        # template: welcome/show.html.erb
         @user = User.find(session[:user_id])
       end
     
       def new
         # method: get
         # action: index
-        # template: students/new.html.erb
+        # template: welcome/new.html.erb
       end
     
       def edit
         # method: get
         # action: index
-        # template: students/edit.html.erb
+        # template: welcome/edit.html.erb
       end
 end
