@@ -1,15 +1,13 @@
+<% if user_signed_in? %> 
+ <h1>Hello <%=current_user.name%> ! </h1>
+ <h2>Welcome to the panel of <%=current_user.role%>s </h2>
+ <% else%>
+
 <p>hey you should log in or sign up</p>
-
-
-<%# <form method="post" action="/users/:id">
-  Username:<input type="text" name="username" placeholder="username"/>
-  Password: <input type="text" name="password" />
-  <input type="submit" value="Go" />
-</form> %>
-
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
 <a href="/users/sign_in">Sign In</a>
 <a href="/users/sign_up">Sign Up</a>
+<% end %>

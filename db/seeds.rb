@@ -20,3 +20,8 @@
 
 # User.create(username: 'Rus', email: 'l@l', password: '333', role: 'student')
 # User.create(username: 'Bron', email: 'b@b', password: '555', role: 'instructor')
+
+# Course.create(name: 'Math', class_hours: 60)
+# Course.create(name: 'Literature', class_hours: 40)
+# Cohort.create(name: 'Second', auditorium: 401, start_date: 19, end_date: 28, students_number: 13 )
+Student.create(first_name: 'Sooraya', last_name: 'Qadir', nickname: 'Dust', age: 27, abilities: 'transform herself into an explosive cloud of sand-like silicon particles and maintain control of her sand form', photo: "https://i.pinimg.com/originals/b7/61/f4/b761f459771653d850ce5669a28bc613.jpg", cohort_id: 2)
