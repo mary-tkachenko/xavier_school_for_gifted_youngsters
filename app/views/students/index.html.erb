@@ -1,10 +1,10 @@
 <% @students.each do |student| %>
-  Name: <%= student.first_name %> <%= student.last_name %>
-  Age: <%= student.age %>
-  Nickname: <%= student.nickname %>
-  Abilities: <%= student.abilities %>
-  Cohort: <%= student.cohort_id %>
-  <img src="<%= student.photo %>" style="width:200px;">
+  <p>Name: <%= student.first_name %> <%= student.last_name %></p>
+  <p>Age: <%= student.age %></p>
+  <p>Nickname: <%= student.nickname %></p>
+  <p>Abilities: <%= student.abilities %></p>
+  <p>Cohort: <%= student.cohort_id %></p>
+  <p><img src="<%= student.photo %>" style="width:200px;"></p>
 
 <a href="/students/<%=student.id%>/edit">Edit</a>
 <a href="/students/<%=student.id%>/delete">Delete</a>
