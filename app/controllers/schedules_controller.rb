@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :allow_only_admin, only: [:new, :create, :edit]
     def index
         # method: get
         # action: index
@@ -7,9 +8,7 @@ class SchedulesController < ApplicationController
       end
     
       def show
-        # method: get
-        # action: index
-        # template: students/show.html.erb
+        @cohort = Cohort.find(params[:id])
       end
     
       def new

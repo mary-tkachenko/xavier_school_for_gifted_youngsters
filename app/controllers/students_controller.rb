@@ -5,7 +5,6 @@ class StudentsController < ApplicationController
       def index
         @students = Student.order(:id).all
         @cohorts = Cohort.all
-        puts "IM IN IN THE INDEX METHOD"
       end
     
       def show

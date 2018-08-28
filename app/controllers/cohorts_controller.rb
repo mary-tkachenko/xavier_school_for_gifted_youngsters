@@ -1,26 +1,51 @@
 class CohortsController < ApplicationController
+  before_action :allow_only_admin, only: [:new, :create, :edit]
     def index
-        # method: get
-        # action: index
-        # template: students/index.html.erb
-        @cohorts = Cohort.all
+      @cohorts = Cohort.order(:id).all
+      @cohorts = Cohort.all
       end
     
       def show
-        # method: get
-        # action: index
-        # template: students/show.html.erb
       end
     
       def new
-        # method: get
-        # action: index
-        # template: students/new.html.erb
+        @cohort = Cohort.new
+      end
+    
+      def create
+        @cohort = Cohort.new(
+          name: params[:cohort][:name],
+          auditorium: params[:cohort][:auditorium],
+          start_date: params[:cohort][:start_date],
+          end_date: params[:cohort][:end_date],
+          students_number: params[:cohort][:students_number],
+
+        )
+        if @cohort.save
+          redirect_to cohorts_path
+        else
+          render 'new'
+        end
       end
     
       def edit
-        # method: get
-        # action: index
-        # template: students/edit.html.erb
+        @cohort = Cohort.find(params[:id])
+      end
+
+      def update
+        cohort_params = {
+          name: params[:cohort][:name],
+          auditorium: params[:cohort][:auditorium],
+          start_date: params[:cohort][:start_date],
+          end_date: params[:cohort][:end_date],
+          students_number: params[:cohort][:students_number],
+        }
+        
+        @cohort = Cohort.find(params[:id])
+        if @cohort.update(cohort_params)
+          redirect_to cohort_path(@cohort)
+        else
+          render 'edit'
+        end
       end
 end
