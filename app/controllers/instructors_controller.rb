@@ -48,4 +48,9 @@ class InstructorsController < ApplicationController
           render 'edit'
         end
       end
+
+      def destroy
+        @instructor = Instructor.find(params[:id])
+        @instructor.destroy
+      end
 end

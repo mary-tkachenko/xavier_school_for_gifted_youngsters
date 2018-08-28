@@ -8,7 +8,8 @@ class SchedulesController < ApplicationController
       end
     
       def show
-        @cohort = Cohort.find(params[:id])
+        # @cohorts = Cohort.all
+        @schedule = Schedule.find(params[:id])
       end
     
       def new
