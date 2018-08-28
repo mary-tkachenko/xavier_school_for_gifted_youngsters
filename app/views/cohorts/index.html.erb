@@ -4,4 +4,16 @@
   <p>Start: <%= cohort.start_date %></p>
   <p>End: <%= cohort.end_date %></p>
   <p>Students total: <%= cohort.students_number %></p>
+
+   <% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/cohorts/<%=cohort.id%>/edit">Edit</a>
+  <a href="/cohorts/<%=cohort.id%>/delete">Delete</a>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/cohorts/new">add a cohort</a>
+  <% end %>
 <% end %>

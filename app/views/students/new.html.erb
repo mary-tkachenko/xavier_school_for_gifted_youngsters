@@ -1,4 +1,5 @@
-<%= form_with model: @student do |form| %>
+<%= form_with model: @student, local: true do |form| %>
+  <%= render "shared/errors", object: @student %>
   First Name: <%= form.text_field :first_name, placeholder: "name"%>
   Last Name: <%= form.text_field :last_name %>
   Nickname: <%= form.text_field :nickname %>
@@ -6,6 +7,5 @@
   Abilities: <%= form.text_field :abilities %>
   Photo: <%= form.text_field :photo %>
   Cohort: <%= form.text_field :cohort_id %>
-  <%= form.hidden_field :user_id, value: @student_id %>
   <%= form.submit %>
-<% end %>
+<% end %> 
