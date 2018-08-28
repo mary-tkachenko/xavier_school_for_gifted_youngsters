@@ -11,11 +11,12 @@
 
   <body>
 
-   <%= yield %>
+
   <nav>
    
     <% if user_signed_in? %>
-  
+  <h1>Hello <%=current_user.name%> ! </h1>
+ <h2>Welcome to the panel of <%=current_user.role%>s </h2>
     <% user = current_user.role  %>
     
         <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
@@ -44,7 +45,7 @@
     <% end %>
 </nav>
 
-
+   <%= yield %>
    
   </body>
 </html>

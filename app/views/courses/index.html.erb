@@ -1,4 +1,16 @@
 <% @courses.each do |course| %>
  <p> Name: <%= course.name %></p>
  <p>Hours: <%= course.class_hours %></p>
+
+ <% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/courses/<%=course.id%>/edit">Edit</a>
+  <a href="/courses/<%=course.id%>/delete">Delete</a>
+  <% end %>
+  <% end %>
+  <% end %>
+  <% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/courses/new">add a course</a>
+  <% end %>
 <% end %>
