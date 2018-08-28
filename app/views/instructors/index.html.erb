@@ -5,7 +5,8 @@
   <p>Abilities: <%= instructor.abilities %></p>
   <p>Salary: <%= instructor.salary %></p>
   <p>Education: <%= instructor.education %></p>
-  <p>Course: <%= instructor.course_id %></p>
+   <% specific_course = Course.find(instructor.course_id) %>
+  Course: <%= specific_course.name %>
   <p><img src="<%= instructor.photo_url %>" style="width:200px;"></p>
   <a href="/instructors/<%=instructor.id%>">Go to personal page</a>
 
