@@ -1,4 +1,5 @@
 <% @instructors.each do |instructor| %>
+<div id="instructor-<%= instructor.id %>">
   <p>Name: <%= instructor.first_name %> <%= instructor.last_name %></p>
   <p>Age: <%= instructor.age %></p>
   <p>Nickname: <%= instructor.nickname %></p>
@@ -13,10 +14,13 @@
    <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/instructors/<%=instructor.id%>/edit">Edit</a>
-  <a href="/instructors/<%=instructor.id%>/delete">Delete</a>
+  <td><%= link_to 'Destroy',instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_instructor' %> </td>
   <% end %>
   <% end %>
+  </div>
   <% end %>
+
+
   <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/instructors/new">add a instructor</a>

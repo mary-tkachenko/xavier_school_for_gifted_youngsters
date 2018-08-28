@@ -1,3 +1,15 @@
-<p>Monday</p>
-<p>10:00 </p>
+
+ <% specific_cohort = Cohort.find(@schedule.cohort_id) %>
+ <%= @schedule.cohort_id %>
+ <p> Schedule for cohort: <%= specific_cohort.name %> </p>
+
+  
+
+
+
+
+
+
+
+
 
