@@ -1,3 +1,4 @@
 <% @cohorts.each do |cohort| %>
-  <p><a href="/schedules/<%=cohort.id%>"><%= cohort.name %></a> <%=cohort.id%></p>
+  <p>Cohort name: <a href="/schedules/<%=cohort.id%>"><%= cohort.name %></a> <%=cohort.id%></p>
 <% end %>
+

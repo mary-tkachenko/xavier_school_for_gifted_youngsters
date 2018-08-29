@@ -5,6 +5,7 @@ class SchedulesController < ApplicationController
         # action: index
         # template: students/index.html.erb
         @cohorts = Cohort.all
+        @schedule = Schedule.all
       end
     
       def show

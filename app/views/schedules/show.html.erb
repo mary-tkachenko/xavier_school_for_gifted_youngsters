@@ -1,7 +1,25 @@
 
- <% specific_cohort = Cohort.find(@schedule.cohort_id) %>
- <%= @schedule.cohort_id %>
+ <% specific_cohort = Cohort.find(params[:id]) %>
+
  <p> Schedule for cohort: <%= specific_cohort.name %> </p>
+ <p> Cohort ID: <%= specific_cohort.id%></p>
+ <p> Day: <%= @schedule.day_of_week%></p>
+ <p> Time: <%= @schedule.time%></p>
+
+   <% specific_course = Course.find(@schedule.course_id) %>
+ <p> Course: <%= specific_course.name %></p>
+
+     <% specific_instructor = Instructor.find(@schedule.instructor_id) %>
+  <p>Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %></p>
+ 
+
+
+
+
+
+
+
+
 
   
 
