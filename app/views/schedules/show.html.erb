@@ -3,16 +3,29 @@
 
  <p> Schedule for cohort: <%= specific_cohort.name %> </p>
  <p> Cohort ID: <%= specific_cohort.id%></p>
- <p> Day: <%= @schedule.day_of_week%></p>
- <p> Time: <%= @schedule.time%></p>
 
-   <% specific_course = Course.find(@schedule.course_id) %>
- <p> Course: <%= specific_course.name %></p>
+<ul>
+ <% specific_cohort.schedules.each do |schedule| %>
+  <div id="schedule-<%= schedule.id %>">
+    <p><%= schedule.day_of_week %> at <%= schedule.time %></p>
+    <% specific_course = Course.find(schedule.course_id) %>
+  <li>Course: <%= specific_course.name %></p></li>
+    <% specific_instructor = Instructor.find(schedule.instructor_id) %>
+  <li>Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %></li>
+  </br>
+<% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/schedules/<%=schedule.id%>/edit">Edit</a>
+  <td><%= link_to 'Destroy',schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_schedule' %> </td>
+  </div>
+<% end %>
+<% end %>
+<% end %>
 
-     <% specific_instructor = Instructor.find(@schedule.instructor_id) %>
-  <p>Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %></p>
+</ul>
+
+
  
-
 
 
 

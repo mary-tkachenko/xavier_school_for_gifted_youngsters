@@ -1,4 +1,5 @@
 <% @cohorts.each do |cohort| %>
+<div id="cohort-<%= cohort.id %>">
   <p>Name: <%= cohort.name %></p>
   <p>Auditorium: <%= cohort.auditorium %></p>
   <p>Start: <%= cohort.start_date %></p>
@@ -8,12 +9,15 @@
    <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/cohorts/<%=cohort.id%>/edit">Edit</a>
-  <a href="/cohorts/<%=cohort.id%>/delete">Delete</a>
+  <td><%= link_to 'Destroy',cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_cohort' %> </td>
   <% end %>
   <% end %>
+  </div>
   <% end %>
   <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/cohorts/new">add a cohort</a>
   <% end %>
+  
+  
 <% end %>

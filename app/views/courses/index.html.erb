@@ -1,4 +1,5 @@
 <% @courses.each do |course| %>
+<div id="course-<%= course.id %>">
  <p> Name: <%= course.name %></p>
  <p>Hours: <%= course.class_hours %></p>
 
@@ -6,11 +7,14 @@
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/courses/<%=course.id%>/edit">Edit</a>
   <a href="/courses/<%=course.id%>/delete">Delete</a>
+  <td><%= link_to 'Destroy',course_path(course), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_course' %> </td>
   <% end %>
   <% end %>
+  </div>
   <% end %>
   <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
   <a href="/courses/new">add a course</a>
   <% end %>
+  
 <% end %>

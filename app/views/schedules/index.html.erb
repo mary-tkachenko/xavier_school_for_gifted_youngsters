@@ -2,3 +2,9 @@
   <p>Cohort name: <a href="/schedules/<%=cohort.id%>"><%= cohort.name %></a> <%=cohort.id%></p>
 <% end %>
 
+<% user = current_user.role  %>
+  <% unless user == "student" || unless user == "instructor"%>
+  <a href="/schedules/new">add a schedule</a>
+  <% end %>
+<% end %>
+
