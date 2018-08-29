@@ -48,4 +48,9 @@ class CohortsController < ApplicationController
           render 'edit'
         end
       end
+
+      def destroy
+        @cohort = Cohort.find(params[:id])
+        @cohort.destroy
+      end
 end

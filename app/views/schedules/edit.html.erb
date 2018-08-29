@@ -1,0 +1,10 @@
+<%= form_with model: @schedule, local: true do |form| %>
+<%= render "shared/errors", object: @schedule %>
+  Day: <%= form.text_field :day_of_week, placeholder: "day_of_week"%>
+  Time: <%= form.text_field :time %>
+  Course: <%= form.text_field :course_id %>
+  Cohort: <%= form.text_field :cohort_id %>
+  Instructor: <%= form.text_field :instructor_id %>
+  <%= form.hidden_field :user_id, value: @schedule %>
+  <%= form.submit %>
+<% end %> 
