@@ -9,9 +9,7 @@ class SchedulesController < ApplicationController
       end
     
       def show
-        # @cohorts = Cohort.all
         
-
       end
     
       def new
@@ -45,11 +43,6 @@ class SchedulesController < ApplicationController
         else
           render 'edit'
         end
-      end
-
-      def destroy
-        @schedule = Schedule.find(params[:id])
-        @schedule.destroy
       end
 
       def destroy
