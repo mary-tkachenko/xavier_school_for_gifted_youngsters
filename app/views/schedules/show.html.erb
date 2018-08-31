@@ -4,49 +4,24 @@
  <p> Schedule for cohort: <%= specific_cohort.name %> </p>
  <p> Cohort ID: <%= specific_cohort.id%></p>
 
-<ul>
- <% specific_cohort.schedules.each do |schedule| %>
-  <div id="schedule-<%= schedule.id %>">
-    <p><%= schedule.day_of_week %> at <%= schedule.time %></p>
-    <% specific_course = Course.find(schedule.course_id) %>
-  <li>Course: <%= specific_course.name %></p></li>
-    <% specific_instructor = Instructor.find(schedule.instructor_id) %>
-  <li>Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %></li>
-  </br>
-<% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/schedules/<%=schedule.id%>/edit">Edit</a>
-  <td><%= link_to 'Destroy',schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_schedule' %> </td>
-  </div>
-<% end %>
-<% end %>
-<% end %>
-
-
+<%= 'MONDAY' %>
 <% specific_cohort = Cohort.find(params[:id]) %>
 <% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "Monday" }) %>
 <% result.each do |superresult|%>
-<p>DAY: <%=superresult.day_of_week%></p>
-<p>TIME: <%=superresult.time%></p>
-<% specific_course = Course.find(superresult.course_id) %>
- Course: <%= specific_course.name %>
- <% specific_instructor = Instructor.find(superresult.instructor_id) %>
- Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %>
+    <div id="schedule-<%= superresult.id %>">
+    <p>DAY: <%=superresult.day_of_week%></p>
+    <p>TIME: <%=superresult.time%></p>
+    <% specific_course = Course.find(superresult.course_id) %>
+    Course: <%= specific_course.name %>
+    <% specific_instructor = Instructor.find(superresult.instructor_id) %>
+    Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %>
+    
+    <% user = current_user.role  %>
+        <% unless user == "student" || unless user == "instructor"%>
+        <a href="/schedules/<%=superresult.id%>/edit">Edit</a>
+        <td><%= link_to 'Destroy',schedule_path(superresult), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_superresult' %> </td>
+        <p>*******************************************</p>
+        <% end %>
+    <% end %>
 <% end %>
-
-<% specific_cohort = Cohort.find(params[:id]) %>
-<% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "Tuesday" }) %>
-<% result.each do |superresult|%>
-<p>DAY: <%=superresult.day_of_week%></p>
-<p>TIME: <%=superresult.time%></p>
-<% specific_course = Course.find(superresult.course_id) %>
- Course: <%= specific_course.name %>
- <% specific_instructor = Instructor.find(superresult.instructor_id) %>
- Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %>
-<% end %>
-
-
-
-
-
 
