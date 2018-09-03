@@ -1,12 +1,13 @@
+<div id="welcome_page">
 <% if !user_signed_in? %> 
- 
-
-<p>hey you should log in or sign up</p>
-
+<p id="welcoming_users">WELCOME TO THE X-MEN ADMIN PANEL</p>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<a href="/users/sign_in">Sign In</a>
-<a href="/users/sign_up">Sign Up</a>
+<div class="ui large buttons welcome_button">
+  <button class="ui button button_signin"><a href="/users/sign_in">SIGN IN</a></button>
+  <button class="ui button button_signup"><a href="/users/sign_up">SIGN UP</a></button>
+</div>
 <% end %>
+</div>
+
 
