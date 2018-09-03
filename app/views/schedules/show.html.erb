@@ -6,7 +6,7 @@
 
 <%= 'MONDAY' %>
 <% specific_cohort = Cohort.find(params[:id]) %>
-<% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "Monday" }) %>
+<% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "Monday" }).order(:time) %>
 <% result.each do |superresult|%>
     <div id="schedule-<%= superresult.id %>">
     <p>DAY: <%=superresult.day_of_week%></p>
@@ -25,3 +25,25 @@
     <% end %>
 <% end %>
 
+<% def sorting(day_of_week)%>
+<% specific_cohort = Cohort.find(params[:id]) %>
+<% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "day_of_week" }).order(:time) %>
+<% result.each do |superresult|%>
+    <div id="schedule-<%= superresult.id %>">
+    <p>DAY: <%=superresult.day_of_week%></p>
+    <p>TIME: <%=superresult.time%></p>
+    <% specific_course = Course.find(superresult.course_id) %>
+    Course: <%= specific_course.name %>
+    <% specific_instructor = Instructor.find(superresult.instructor_id) %>
+    Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %>
+    
+    <% user = current_user.role  %>
+        <% unless user == "student" || unless user == "instructor"%>
+        <a href="/schedules/<%=superresult.id%>/edit">Edit</a>
+        <td><%= link_to 'Destroy',schedule_path(superresult), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_superresult' %> </td>
+        <p>*******************************************</p>
+        <% end %>
+    <% end %>
+<% end %>
+<%end%>
+<%sorting('Monday')%>
