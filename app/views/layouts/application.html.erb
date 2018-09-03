@@ -16,38 +16,37 @@
   <nav>
    
     <% if user_signed_in? %>
-  <h1>Hello <%=current_user.name%> ! </h1>
- <h2>Welcome to the panel of <%=current_user.role%>s </h2>
+  <h1> HI, <%=current_user.name%> ! </h1>
+ <h2>WELCOME TO THE PANEL OF <%=current_user.role%>S </h2>
     <% user = current_user.role  %>
     
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-        <%= link_to 'Edit Profile', edit_user_registration_path %>
+        <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete %>
+        <%= link_to 'EDIT PROFILE', edit_user_registration_path %>
           <% if user == "student" %> 
 
-<p><a href="/instructors"> See instructors </a></p>
- <p><a href="/courses"> See courses </a></p>
- <p><a href="/schedules"> See schedule </a></p>
+<p><a href="/instructors"> INSTRUCTORS </a></p>
+ <p><a href="/courses"> COURSES </a></p>
+ <p><a href="/schedules"> SCHEDULE </a></p>
  
 <% elsif user == "instructor"%>
 
-
-        <p><a href="/students"> See students </a></p>
-        <p><a href="/courses"> See courses </a></p>
-      <p><a href="/instructors"> See instructors </a></p>
-      <p><a href="/cohorts"> See cohorts </a></p>
-      <p><a href="/schedules"> See schedule </a></p>
+        <p><a href="/students"> STUDENTS </a></p>
+        <p><a href="/courses"> COURSES </a></p>
+      <p><a href="/instructors"> INSTRUCTORS </a></p>
+      <p><a href="/cohorts"> COHORTS </a></p>
+      <p><a href="/schedules"> SCHEDULE </a></p>
 
       <% else %>
-      <p><a href="/students"> See students </a></p>
-        <p><a href="/courses"> See courses </a></p>
-      <p><a href="/instructors"> See instructors </a></p>
-      <p><a href="/cohorts"> See cohorts </a></p>
-      <p><a href="/schedules"> See schedule </a></p>
+      <p><a href="/students"> STUDENTS </a></p>
+        <p><a href="/courses"> COURSES </a></p>
+      <p><a href="/instructors"> INSTRUCTORS </a></p>
+      <p><a href="/cohorts"> COHORTS </a></p>
+      <p><a href="/schedules"> SCHEDULE </a></p>
       <%end%>
     <% end %>
 </nav>
 
+
    <%= yield %>
-   
   </body>
 </html>
