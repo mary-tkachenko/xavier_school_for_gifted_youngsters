@@ -1,6 +1,6 @@
 #welcome_page {
     font-family: 'Orbitron', sans-serif;
-    background-image: url("/images/school.jpg");
+    background-image: url("/images/mainpage.jpg");
     height: 100%;
     background-size: cover;
     overflow: hidden;
@@ -18,14 +18,13 @@
         text-align: center;
         font-size: 34px;
         background-color: #fc0d1b;
-        margin-top: 62px;
+        margin-top: 49px;
         padding: 10px;
     }
 
     .welcome_button {
-        margin-left: 42%;
-        margin-right: 34%;
-        margin-top: 143px;
+        margin-left: 67px;
+        margin-top: 22px;
     }
     
     .button_signin:hover, .button_signup:hover {
@@ -34,3 +33,67 @@
    
 }
 
+
+#signup, #signin {
+    background-image: url("/images/xavier.jpg");
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+
+h2, .actions p .x {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.x, .submit_button {
+    background: transparent;
+    border: 1px solid #fc0d1b;
+    height: 30px;
+    width: 300px;
+    margin: 10px;
+}
+
+#new_user {
+    margin-left: 30px;
+}
+ a {
+     opacity: 0;
+ }
+
+ h2 {
+    margin-top: 20px;
+    margin-left: 30px;
+ }
+
+ input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(12, 12, 12);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input {
+    outline: none;
+}
+.submit_button {
+    background-color: #fc0d1b;
+    font-family: 'Orbitron', sans-serif;
+}
+.submit_button:hover {
+    background-color: blue;
+    border: 1px solid blue;
+    color: #fc0d1b;
+}
+
+}
+
+
+nav {
+
+}
