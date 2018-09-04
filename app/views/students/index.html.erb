@@ -5,6 +5,7 @@
       <th>PHOTO</th>
       <th>NAME</th>
       <th>NICKNAME</th>
+      <th>AGE</th>
       <th>ABILITIES</th>
       <th>COHORT</th>
       <% if current_user.role == "admin" %>
@@ -18,6 +19,7 @@
     <td><img src="<%= student.photo %>" class="userpic"></td>
     <td><%= student.first_name %> <%= student.last_name %></td>
     <td><%= student.nickname %></td>
+    <td><%= student.age %></td>
     <td><%= student.abilities %></td>
     <% specific_cohort = Cohort.find(student.cohort_id) %>
     <td><%= specific_cohort.name %></td>

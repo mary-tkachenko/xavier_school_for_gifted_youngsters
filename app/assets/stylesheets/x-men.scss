@@ -36,6 +36,7 @@
 
 #signup, #signin {
     background-image: url("/images/xavier.jpg");
+    background-attachment: fixed;
     height: 100%;
     background-size: cover;
     overflow: hidden;
@@ -136,7 +137,7 @@ input {
 
 #navigation  {
     font-size: 24px;
-    margin-left: 54px;
+    margin-left: 29px;
     float: left;
     margin-top: 33px;
 
@@ -152,8 +153,9 @@ input {
 
 #cohorts, #courses, #students, #instructors, #schedules{
     width: 1000px;
-    opacity: 0.8;
+    opacity: 0.9;
     margin-top: 33px;
+    margin-bottom: 50px;
 
     thead {
         text-align: center;
@@ -177,9 +179,12 @@ input {
     color: #fc0d1b;
     background: black;
     padding: 10px;
+    font-size: 17px;
+
 
     &:hover {
-        background-color: blue;
+        color: black;
+        background: #fc0d1b;
     }
 }
 
@@ -194,8 +199,8 @@ img.userpic {
 .content {
     float: left;
     color: white;
-    margin-left: 60px;
-    margin-top: 33px;
+    margin-left: 20px;
+    margin-top: 7px;
 }
 
 .schedule-day {
@@ -225,4 +230,53 @@ h3 {
             color:black;
         }
      }
+}
+
+input, select {
+    font-family: 'Orbitron', sans-serif;
+    background: rgba(255,255,255, 0.7);
+    border: 1px solid #fc0d1b;
+    text-transform: uppercase;
+}
+
+#new {
+    margin-left: 50px;
+    p{
+    font-size: 19px;
+    color: #fc0d1b;
+    text-transform: uppercase;
+}
+}
+
+#submit_button input {
+    background-color: blue;
+    padding: 5px;
+    border: none;
+ 
+
+    &:hover {
+        background-color: #fc0d1b;
+    }
+}
+
+#day_of_week {
+    background-color: blue;
+    padding: 10px;
+    font-size: 20px;
+}
+
+td {
+    text-transform: uppercase;
+}
+
+#error_explanation {
+    padding: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+
+    h2, li {
+        color: white;
+        font-family: 'Orbitron', sans-serif;
+    }
+   
 }

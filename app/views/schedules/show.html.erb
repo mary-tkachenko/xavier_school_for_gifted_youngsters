@@ -2,7 +2,7 @@
 <div id="schedules">
     <% @schedule_days.each do |day, schedules| %>
             <div class="schedule-day">
-                <%= day.upcase %>
+                <p id="day_of_week"><%= day.upcase %></p>
         <table class="ui selectable celled table">
         <thead>
             <tr>
@@ -29,8 +29,10 @@
         
         </tbody>
         </table>
+
         
             </div>
         <%end%>
+
 </div>
 

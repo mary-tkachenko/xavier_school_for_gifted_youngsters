@@ -22,7 +22,7 @@ class CohortsController < ApplicationController
 
         )
         if @cohort.save
-          redirect_to cohorts_path
+          redirect_to "/cohorts"
         else
           render 'new'
         end
@@ -43,7 +43,7 @@ class CohortsController < ApplicationController
         
         @cohort = Cohort.find(params[:id])
         if @cohort.update(cohort_params)
-          redirect_to cohort_path(@cohort)
+          redirect_to "/cohorts"
         else
           render 'edit'
         end

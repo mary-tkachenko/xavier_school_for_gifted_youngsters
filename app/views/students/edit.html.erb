@@ -1,11 +1,13 @@
+<div id="new">
 <%= form_with model: @student, local: true do |form| %>
   <%= render "shared/errors", object: @student %>
-  First Name: <%= form.text_field :first_name, placeholder: "First name"%>
-  Last Name: <%= form.text_field :last_name %>
-  Nickname: <%= form.text_field :nickname %>
-  Age: <%= form.text_field :age %>
-  Abilities: <%= form.text_field :abilities %>
-  Photo: <%= form.text_field :photo %>
-  Cohort: <%= form.text_field :cohort_id %>
-  <%= form.submit %>
+  <p>First Name: <%= form.text_field :first_name%></p>
+  <p>Last Name: <%= form.text_field :last_name %></p>
+  <p>Nickname: <%= form.text_field :nickname %></p>
+  <p>Age: <%= form.select :age, ((1..150).map {|i| [i,i] } << []) %></p>
+  <p>Abilities: <%= form.text_field :abilities %></p>
+  <p>Photo: <%= form.text_field :photo %></p>
+  <p>COHORT: <%= form.collection_select(:cohort_id, Cohort.all, :id, :name) %></p>
+  <p id="submit_button"><%= form.submit %></p>
 <% end %>
+</div>

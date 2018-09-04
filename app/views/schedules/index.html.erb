@@ -1,5 +1,5 @@
 <% @cohorts.each do |cohort| %>
-  <h3><a href="/schedules/<%=cohort.id%>"> Cohort <%= cohort.name %></a></h3>
+  <h3 style="margin-top: 29px;"><a href="/schedules/<%=cohort.id%>"> Cohort <%= cohort.name %></a></h3>
 <% end %>
 
 <% user = current_user.role  %>
