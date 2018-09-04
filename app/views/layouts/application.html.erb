@@ -4,55 +4,42 @@
     <title>XMen</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body id="section_page">
-
-
-  <nav>
-   
-    <% if user_signed_in? %>
-  <h2 id="welcoming_signedin_user"> HI, <%=current_user.name%>! WELCOME TO THE PANEL OF <%=current_user.role%>S </h2>
-    <% user = current_user.role  %>
-    
-        <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete,:class => 'sign_out'  %>
-        <%= link_to 'EDIT PROFILE', edit_user_registration_path, :class => 'edit_profile' %>
-          <% if user == "student" %> 
-<div id="section_for_student">
-<p><a href="/courses"> COURSES </a></p>
-<p><a href="/instructors"> INSTRUCTORS </a></p>
- <p><a href="/schedules"> SCHEDULE </a></p>
- </div>
  
-<% elsif user == "instructor"%>
-<div id="section_for_instructor">
-<p><a href="/courses"> COURSES </a></p>
- <p><a href="/cohorts"> COHORTS </a></p>
-        <p><a href="/students"> STUDENTS </a></p>
-        
-      <p><a href="/instructors"> INSTRUCTORS </a></p>
-      
-      <p><a href="/schedules"> SCHEDULE </a></p>
-</div>
-      <% else %>
-      <div id="section_for_admin">
-      <p><a href="/cohorts"> COHORTS </a></p>
-      <p><a href="/courses"> COURSES </a></p>
-      <p><a href="/students"> STUDENTS </a></p>
-        
-      <p><a href="/instructors"> INSTRUCTORS </a></p>
-      
-      <p><a href="/schedules"> SCHEDULE </a></p>
-      </div>
-      <%end%>
-    <% end %>
-</nav>
+    <nav>
+      <% if user_signed_in? %>
+        <h2 id="welcoming_signedin_user"> HI, <%= current_user.name %>! WELCOME TO THE PANEL OF <%= current_user.role %>S </h2>
+         <div id="content">
+        <div id="navigation_section">
+            <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, :class => 'sign_out' %>
+            <%= link_to 'EDIT PROFILE', edit_user_registration_path, :class => 'edit_profile' %>
+        <% if ["admin", "instructor"].include?(current_user.role)  %> 
 
-
-   <%= yield %>
+          <div id="navigation">
+            <p><a href="/cohorts" class="<%= params[:controller] == 'cohorts' ? 'active' : '' %>">COHORTS</a></p>
+            <p><a href="/courses" class="<%= params[:controller] == 'courses' ? 'active' : '' %>">COURSES</a></p>
+            <p><a href="/students" class="<%= params[:controller] == 'students' ? 'active' : '' %>">STUDENTS</a></p>
+            <p><a href="/instructors" class="<%= params[:controller] == 'instructors' ? 'active' : '' %>">INSTRUCTORS</a></p>
+            <p><a href="/schedules" class="<%= params[:controller] == 'schedules' ? 'active' : '' %>">SCHEDULE</a></p>
+          </div>
+        <% else %>
+          <div id="navigation">
+            <p><a href="/courses" class="<%= params[:controller] == 'courses' ? 'active' : '' %>">COURSES</a></p>
+            <p><a href="/instructors" class="<%= params[:controller] == 'instructors' ? 'active' : '' %>">INSTRUCTORS</a></p>
+            <p><a href="/schedules" class="<%= params[:controller] == 'schedules' ? 'active' : '' %>">SCHEDULE</a></p>
+          </div>
+        <%end%>
+      <% end %>
+      
+      
+  </nav>
+  
+  <%= yield %>
+  
+  </div>
   </body>
 </html>

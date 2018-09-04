@@ -1,20 +1,33 @@
-<% @courses.each do |course| %>
-<div id="course-<%= course.id %>">
- <p> Name: <%= course.name %></p>
- <p>Hours: <%= course.class_hours %></p>
 
- <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/courses/<%=course.id%>/edit">Edit</a>
-  <a href="/courses/<%=course.id%>/delete">Delete</a>
-  <td><%= link_to 'Destroy',course_path(course), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_course' %> </td>
-  <% end %>
-  <% end %>
-  </div>
-  <% end %>
-  <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/courses/new">add a course</a>
-  <% end %>
-  
-<% end %>
+
+<div id="courses">
+  <table class="ui selectable celled table">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>HOURS</th>
+            <% if current_user.role == "admin" %>
+              <th>ACTION</th>
+            <% end %>
+      </tr>
+    </thead>
+    <tbody>
+   
+    <% @courses.each do |course| %>
+      <tr id="course-<%= course.id %>">
+        <td><%= course.name %></td>
+        <td><%= course.class_hours %></td>
+        <% user = current_user.role  %>
+          <% if current_user.role == "admin" %>
+          <td><a href="/courses/<%=course.id%>/edit" id="edit_course">EDIT</a> | <%= link_to 'DESTROY',course_path(course), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_course' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+    <% user = current_user.role  %>
+      <% unless user == "student" || unless user == "instructor"%>
+        <a href="/courses/new"id="add">ADD A COURSE</a>
+        <% end %>
+        <% end %>
+</div>

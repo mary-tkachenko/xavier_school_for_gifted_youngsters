@@ -1,23 +1,42 @@
-<% @cohorts.each do |cohort| %>
-<div id="cohort-<%= cohort.id %>">
-  <p>Name: <%= cohort.name %></p>
-  <p>Auditorium: <%= cohort.auditorium %></p>
-  <p>Start: <%= cohort.start_date %></p>
-  <p>End: <%= cohort.end_date %></p>
-  <p>Students total: <%= cohort.students_number %></p>
+<div id="cohorts">
+  <table class="ui selectable celled table">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>AUDITORIUM</th>
+        <th>START DATE</th>
+        <th>END DATE</th>
+        <th>STUDENTS TOTAL</th>
+            <% if current_user.role == "admin" %>
+              <th>ACTION</th>
+            <% end %>
+      </tr>
+    </thead>
+    <tbody>
+   
+    <% @cohorts.each do |cohort| %>
+      <tr id="cohort-<%= cohort.id %>">
+        <td><%= cohort.name %></td>
+        <td><%= cohort.auditorium %></td>
+        <td><%= cohort.start_date %></td>
+        <td><%= cohort.end_date %></td>
+        <td><%= cohort.students_number %></td>
+        <% user = current_user.role  %>
+          <% if current_user.role == "admin" %>
+          <td><a href="/cohorts/<%=cohort.id%>/edit" id="edit_cohort">EDIT</a> | <%= link_to 'DESTROY',cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_cohort' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+      
+    <% user = current_user.role  %>
+      <% unless user == "student" || unless user == "instructor"%>
+        <a href="/cohorts/new" id="add">ADD A COHORT</a>
+        <% end %>
+        <% end %>
+</div>
 
-   <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/cohorts/<%=cohort.id%>/edit">Edit</a>
-  <td><%= link_to 'Destroy',cohort_path(cohort), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_cohort' %> </td>
-  <% end %>
-  <% end %>
-  </div>
-  <% end %>
-  <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/cohorts/new">add a cohort</a>
-  <% end %>
-  
-  
-<% end %>
+
+
+
