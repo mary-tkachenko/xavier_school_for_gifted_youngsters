@@ -1,10 +1,10 @@
 <% @cohorts.each do |cohort| %>
-  <p>Cohort name: <a href="/schedules/<%=cohort.id%>"><%= cohort.name %></a>
+  <h3><a href="/schedules/<%=cohort.id%>"> Cohort <%= cohort.name %></a></h3>
 <% end %>
 
 <% user = current_user.role  %>
   <% unless user == "student" || unless user == "instructor"%>
-  <p><a href="/schedules/new">add a schedule</a></p>
+  <p><a href="/schedules/new" id="add">ADD A SCHEDULE</a></p>
   <% end %>
 <% end %>
 

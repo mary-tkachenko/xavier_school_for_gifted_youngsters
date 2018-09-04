@@ -125,7 +125,7 @@ input {
 
     .sign_out {
         margin-left: 1120px;
-        margin-right: 46px;
+        margin-right: 7px;
     }
 
     .sign_out:hover, .edit_profile:hover {
@@ -150,9 +150,8 @@ input {
     }
 }
 
-#cohorts, #courses, #students{
+#cohorts, #courses, #students, #instructors, #schedules{
     width: 1000px;
-    margin-left: 328px;
     opacity: 0.8;
     margin-top: 33px;
 
@@ -165,6 +164,8 @@ input {
     }
 }
 #delete_cohort, #edit_cohort,
+#delete_instructor, #edit_instructor,
+#delete_schedule, #edit_schedule,
 #delete_course, #edit_course,
 #delete_student, #edit_student {
     color: blue;
@@ -186,6 +187,42 @@ input {
     color: white;
 }
 
-img {
+img.userpic {
     height: 100px;
+}
+
+.content {
+    float: left;
+    color: white;
+    margin-left: 60px;
+    margin-top: 33px;
+}
+
+.schedule-day {
+    margin-top: 20px;
+
+    p {
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+}
+
+h3 {
+    background-color: blue;
+    font-family: 'Orbitron', sans-serif;
+    color: #fc0d1b;
+    padding: 10px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0.8;
+     a {
+        font-family: 'Orbitron', sans-serif;
+        color: #fc0d1b;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+
+        &:hover {
+            color:black;
+        }
+     }
 }

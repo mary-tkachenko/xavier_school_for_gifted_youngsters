@@ -15,6 +15,7 @@
         <h2 id="welcoming_signedin_user"> HI, <%= current_user.name %>! WELCOME TO THE PANEL OF <%= current_user.role %>S </h2>
          <div id="content">
         <div id="navigation_section">
+        
             <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, :class => 'sign_out' %>
             <%= link_to 'EDIT PROFILE', edit_user_registration_path, :class => 'edit_profile' %>
         <% if ["admin", "instructor"].include?(current_user.role)  %> 
@@ -38,7 +39,13 @@
       
   </nav>
   
-  <%= yield %>
+  <% if user_signed_in? %>
+    <div class="content">
+      <%= yield %>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
   
   </div>
   </body>

@@ -1,28 +1,36 @@
-<% @instructors.each do |instructor| %>
-<div id="instructor-<%= instructor.id %>">
-  <p>Name: <%= instructor.first_name %> <%= instructor.last_name %></p>
-  <p>Age: <%= instructor.age %></p>
-  <p>Nickname: <%= instructor.nickname %></p>
-  <p>Abilities: <%= instructor.abilities %></p>
-  <p>Salary: <%= instructor.salary %></p>
-  <p>Education: <%= instructor.education %></p>
-   <% specific_course = Course.find(instructor.course_id) %>
-  Course: <%= specific_course.name %>
-  <p><img src="<%= instructor.photo_url %>" style="width:200px;"></p>
-  <a href="/instructors/<%=instructor.id%>">Go to personal page</a>
-
-   <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/instructors/<%=instructor.id%>/edit">Edit</a>
-  <td><%= link_to 'Destroy',instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_instructor' %> </td>
-  <% end %>
-  <% end %>
-  </div>
-  <% end %>
-
-
-  <% user = current_user.role  %>
-  <% unless user == "student" || unless user == "instructor"%>
-  <a href="/instructors/new">add a instructor</a>
-  <% end %>
+<div id="instructors">
+<table class="ui selectable celled table">
+  <thead>
+    <tr>
+      <th>PHOTO</th>
+      <th>NAME</th>
+      <th>NICKNAME</th>
+      <th>ABILITIES</th>
+      <th>SALARY</th>
+      <th>EDUCATION</th>
+      <% if current_user.role == "admin" %>
+              <th>ACTION</th>
+            <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @instructors.each do |instructor| %>
+    <tr id="instructor-<%= instructor.id %>">
+    <td><img src="<%= instructor.photo_url %>" class="userpic"></td>
+    <td><%= instructor.first_name %> <%= instructor.last_name %></td>
+    <td><%= instructor.nickname %></td>
+    <td><%= instructor.abilities %></td>
+    <td><%= instructor.salary %></td>
+    <td><%= instructor.education %></td>
+    <% if current_user.role == "admin"%>
+      <td><a href="/instructors/<%=instructor.id%>/edit" id="edit_instructor">Edit</a> |
+     <%= link_to 'Destroy',instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_instructor' %> </td>
+    <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if (current_user.role == "admin") %>
+  <a href="/instructors/new" id="add">ADD AN INSTRUCTOR</a>
 <% end %>
+</div>

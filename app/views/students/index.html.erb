@@ -15,7 +15,7 @@
   <tbody>
   <% @students.each do |student| %>
     <tr id="student-<%= student.id %>">
-    <td><img src="<%= student.photo %>"></td>
+    <td><img src="<%= student.photo %>" class="userpic"></td>
     <td><%= student.first_name %> <%= student.last_name %></td>
     <td><%= student.nickname %></td>
     <td><%= student.abilities %></td>

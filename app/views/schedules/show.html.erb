@@ -1,26 +1,36 @@
 
- <% specific_cohort = Cohort.find(params[:id]) %>
- <p> Schedule for cohort: <%= specific_cohort.name %> </p>
- <p> Cohort ID: <%= specific_cohort.id%></p>
-
-<%= 'MONDAY' %>
-
-<% specific_cohort = Cohort.find(params[:id]) %>
-<% result = Schedule.where({ cohort_id: specific_cohort.id, day_of_week: "Monday" }).order(:time) %>
-<% result.each do |superresult|%>
-    <div id="schedule-<%= superresult.id %>">
-    <p>TIME: <%=superresult.time%></p>
-    <% specific_course = Course.find(superresult.course_id) %>
-    Course: <%= specific_course.name %>
-    <% specific_instructor = Instructor.find(superresult.instructor_id) %>
-    Instructor: <%= specific_instructor.first_name %> <%= specific_instructor.last_name %>
-    
-    <% user = current_user.role  %>
-        <% unless user == "student" || unless user == "instructor"%>
-        <a href="/schedules/<%=superresult.id%>/edit">Edit</a>
-        <td><%= link_to 'Destroy',schedule_path(superresult), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_superresult' %> </td>
-        <% end %>
-    <% end %>
-    </div>
-<% end %>
+<div id="schedules">
+    <% @schedule_days.each do |day, schedules| %>
+            <div class="schedule-day">
+                <%= day.upcase %>
+        <table class="ui selectable celled table">
+        <thead>
+            <tr>
+            <th>TIME</th>
+            <th>COURSE</th>
+            <th>INSTRUCTOR</th>
+            <% if current_user.role == "admin" %>
+                    <th>ACTION</th>
+                    <% end %>
+            </tr>
+        </thead>
+        <tbody>
+        
+                <% schedules.each do |schedule|%>
+                    <tr id="schedule-<%= schedule.id %>" class="schedule">
+                        <td><%=schedule.time%></td>
+                        <td><%= schedule.course.name %></td>
+                        <td><%= schedule.instructor.full_name %></td>
+                        <% if current_user.role == "admin" %>
+                            <td><a href="/schedules/<%=schedule.id%>/edit" id="edit_schedule">EDIT</a> | <%= link_to 'DESTROY', schedule_path(schedule), method: :delete, data: { confirm: 'Are you sure?' }, id: 'delete_schedule',remote: true %> </td>
+                        <% end %>
+                    </tr>
+                <% end %>
+        
+        </tbody>
+        </table>
+        
+            </div>
+        <%end%>
+</div>
 
