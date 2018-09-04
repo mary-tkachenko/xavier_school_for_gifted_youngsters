@@ -1,22 +1,35 @@
-<% @students.each do |student| %>
-<div id="student-<%= student.id %>">
-  <p>Name: <%= student.first_name %> <%= student.last_name %></p>
-  <p>Age: <%= student.age %></p>
-  <p>Nickname: <%= student.nickname %></p>
-  <p>Abilities: <%= student.abilities %></p>
-  <% specific_cohort = Cohort.find(student.cohort_id) %>
-  Cohort: <%= specific_cohort.name %>
-   
-    <p><img src="<%= student.photo %>" style="width:200px;"></p>
+<div id="students">
+<table class="ui selectable celled table">
+  <thead>
+    <tr>
+      <th>PHOTO</th>
+      <th>NAME</th>
+      <th>NICKNAME</th>
+      <th>ABILITIES</th>
+      <th>COHORT</th>
+      <% if current_user.role == "admin" %>
+              <th>ACTION</th>
+            <% end %>
+    </tr>
+  </thead>
+  <tbody>
+  <% @students.each do |student| %>
+    <tr id="student-<%= student.id %>">
+    <td><img src="<%= student.photo %>"></td>
+    <td><%= student.first_name %> <%= student.last_name %></td>
+    <td><%= student.nickname %></td>
+    <td><%= student.abilities %></td>
+    <% specific_cohort = Cohort.find(student.cohort_id) %>
+    <td><%= specific_cohort.name %></td>
     <% if current_user.role == "admin"%>
-      <a href="/students/<%=student.id%>/edit">Edit</a>
-      <td><%= link_to 'Destroy',student_path(student), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_student' %> </td>
+      <td><a href="/students/<%=student.id%>/edit" id="edit_student">Edit</a> |
+     <%= link_to 'Destroy',student_path(student), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_student' %> </td>
     <% end %>
-    </div>
-<% end %>
-
-
-
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% if (current_user.role == "admin") %>
-  <a href="/students/new">add a student</a>
+  <a href="/students/new" id="add">ADD A STUDENT</a>
 <% end %>
+</div>

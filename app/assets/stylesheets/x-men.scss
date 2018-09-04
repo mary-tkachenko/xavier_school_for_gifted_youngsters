@@ -94,16 +94,13 @@ input {
 }
 
 
-nav {
-
-}
-
 #section_page {
     font-family: 'Orbitron', sans-serif;
     background-image: url("/images/mainpage.jpg");
+    background-attachment: fixed;
     height: 100%;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
 
 
 
@@ -135,18 +132,60 @@ nav {
        color:#fc0d1b;
        background-color: blue;
     }
+}
 
-    #section_for_admin, #section_for_instructor, #section_for_student  {
-        font-size: 24px;
-        margin-left: 54px;
-    }
+#navigation  {
+    font-size: 24px;
+    margin-left: 54px;
+    float: left;
+    margin-top: 33px;
 
-    #section_for_admin a, #section_for_instructor a, #section_for_student a {
+    a {
         color: blue;
         padding: 10px;
+
+        &:hover, &.active {
+            background-color: #fc0d1b;
+        }
     }
-    #section_for_admin a:hover,  #section_for_instructor a:hover, #section_for_student a:hover  {
-        background-color: #fc0d1b;
-    
+}
+
+#cohorts, #courses, #students{
+    width: 1000px;
+    margin-left: 328px;
+    opacity: 0.8;
+    margin-top: 33px;
+
+    thead {
+        text-align: center;
+        font-size: 17px;
+        tr th {
+            color: red;
+        }
     }
+}
+#delete_cohort, #edit_cohort,
+#delete_course, #edit_course,
+#delete_student, #edit_student {
+    color: blue;
+    &:hover {
+        color: red;
+    }
+}
+#add {
+    color: #fc0d1b;
+    background: black;
+    padding: 10px;
+
+    &:hover {
+        background-color: blue;
+    }
+}
+
+#students th {
+    color: white;
+}
+
+img {
+    height: 100px;
 }
