@@ -1,10 +1,9 @@
 <%= form_with model: @schedule, local: true do |form| %>
 <%= render "shared/errors", object: @schedule %>
-  Day: <%= form.text_field :day_of_week, placeholder: "day_of_week"%>
+  Day: <%= form.collection_select(:day_of_week, Schedule.days_of_week, :to_s, :to_s) %>
   Time: <%= form.text_field :time %>
-  Course: <%= form.text_field :course_id %>
-  Cohort: <%= form.text_field :cohort_id %>
-  Instructor: <%= form.text_field :instructor_id %>
-  <%= form.hidden_field :user_id, value: @schedule %>
+  Course: <%= form.collection_select(:course_id, Course.all, :id, :name) %>
+  Cohort: <%= form.collection_select(:cohort_id, Cohort.all, :id, :name) %>
+  Instructor: <%= form.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
   <%= form.submit %>
 <% end %> 
