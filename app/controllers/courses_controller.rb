@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
           class_hours: params[:course][:class_hours],
         )
         if @course.save
-          redirect_to courses_path
+          redirect_to "/courses"
         else
           render 'new'
         end
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
         
         @course = Course.find(params[:id])
         if @course.update(course_params)
-          redirect_to course_path(@course)
+          redirect_to "/courses"
         else
           render 'edit'
         end

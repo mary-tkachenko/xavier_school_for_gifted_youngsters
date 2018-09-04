@@ -1,6 +1,8 @@
+<div id="new">
 <%= form_with model: @course, local: true do |form| %>
   <%= render "shared/errors", object: @course %>
-  Name: <%= form.text_field :name, placeholder: "name"%>
-  Class Hours: <%= form.text_field :class_hours %>
-  <%= form.submit %>
+  <p>Name: <%= form.text_field :name%></p>
+  <p>Class Hours: <%= form.text_field :class_hours %></p>
+  <p id="submit_button"><%= form.submit %></p>
 <% end %> 
+</div>

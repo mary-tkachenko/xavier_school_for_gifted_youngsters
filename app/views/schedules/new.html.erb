@@ -1,9 +1,11 @@
+<div id="new">
 <%= form_with model: @schedule, local: true do |form| %>
 <%= render "shared/errors", object: @schedule %>
-  Day: <%= form.collection_select(:day_of_week, Schedule.days_of_week, :to_s, :to_s) %>
-  Time: <%= form.text_field :time %>
-  Course: <%= form.collection_select(:course_id, Course.all, :id, :name) %>
-  Cohort: <%= form.collection_select(:cohort_id, Cohort.all, :id, :name) %>
-  Instructor: <%= form.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
-  <%= form.submit %>
+  <p>Day: <%= form.collection_select(:day_of_week, Schedule.days_of_week, :to_s, :to_s) %></p>
+  <p>Time: <%= form.text_field :time %></p>
+  <p>Course: <%= form.collection_select(:course_id, Course.all, :id, :name) %></p>
+  <p>Cohort: <%= form.collection_select(:cohort_id, Cohort.all, :id, :name) %></p>
+  <p>Instructor: <%= form.collection_select(:instructor_id, Instructor.all, :id, :full_name) %></p>
+  <p id="submit_button"><%= form.submit %></p>
 <% end %> 
+</div>

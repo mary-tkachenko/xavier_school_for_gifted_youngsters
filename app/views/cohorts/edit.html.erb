@@ -1,9 +1,11 @@
+<div id="new">
 <%= form_with model: @cohort, local: true do |form| %>
   <%= render "shared/errors", object: @cohort %>
-  Name: <%= form.text_field :name, placeholder: "name"%>
-  Auditorium: <%= form.text_field :auditorium %>
-  Start Date: <%= form.text_field :start_date %>
-  End Date: <%= form.text_field :end_date %>
-  Srudents Total: <%= form.text_field :students_number %>
-  <%= form.submit %>
+   <p>NAME: <%= form.text_field :name%></p>
+   <p>Auditorium: <%= form.text_field :auditorium %></p>
+   <p>Start Date: <%= form.text_field :start_date %></p>
+   <p>End Date: <%= form.text_field :end_date %></p>
+   <p>Students Total: <%= form.text_field :students_number %></p>
+  <p id="submit_button"><%= form.submit %></p>
 <% end %> 
+</div>

@@ -8,6 +8,7 @@
       <th>ABILITIES</th>
       <th>SALARY</th>
       <th>EDUCATION</th>
+      <th>COURSE</th>
       <% if current_user.role == "admin" %>
               <th>ACTION</th>
             <% end %>
@@ -22,6 +23,8 @@
     <td><%= instructor.abilities %></td>
     <td><%= instructor.salary %></td>
     <td><%= instructor.education %></td>
+    <% specific_course = Course.find(instructor.course_id) %>
+    <td><%= specific_course.name %></td>
     <% if current_user.role == "admin"%>
       <td><a href="/instructors/<%=instructor.id%>/edit" id="edit_instructor">Edit</a> |
      <%= link_to 'Destroy',instructor_path(instructor), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'delete_instructor' %> </td>

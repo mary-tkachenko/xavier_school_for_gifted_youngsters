@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
           cohort_id: params[:student][:cohort_id],
         )
         if @student.save
-          redirect_to students_path
+          redirect_to "/students"
         else
           render 'new'
         end
@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
         
         @student = Student.find(params[:id])
         if @student.update(student_params)
-          redirect_to student_path(@student)
+          redirect_to "/students"
         else
           render 'edit'
         end

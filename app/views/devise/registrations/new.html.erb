@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.text_field :role, autofocus: true, :class => 'x' %>
+   <%= f.select(:role, ['admin', 'instructor', 'student'], {}, {:class => 'x' }) %>
   </div>
 
   <div class="field">

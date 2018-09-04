@@ -43,7 +43,7 @@ class InstructorsController < ApplicationController
         
         @instructor = Instructor.find(params[:id])
         if @instructor.update(instructor_params)
-          redirect_to instructor_path(@instructor)
+          redirect_to "/instructors"
         else
           render 'edit'
         end
